@@ -1,20 +1,12 @@
 {
   "recommendations": [
-    // Python language support
     "ms-python.python",
-    // Ruff linter + formatter
     "charliermarsh.ruff",
-    // ty type checker (Astral) – install when available as a VS Code extension
     "astral-sh.ty",
-    // TOML syntax
     "tamasfe.even-better-toml",
-    // YAML syntax
     "redhat.vscode-yaml",
-    // EditorConfig support
     "editorconfig.editorconfig",
-    // GitLens for history
     "eamodio.gitlens",
-    // Better error highlighting
     "usernamehw.errorlens"
   ]
 }

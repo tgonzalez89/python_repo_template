@@ -63,7 +63,7 @@ Remove-Item .git -Recurse -Force; git init; git add .; git commit -m "chore: ini
 
 ### Prerequisites
 
-- [uv](https://docs.astral.sh/uv/) – `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 ### Install dependencies & create virtualenv
 

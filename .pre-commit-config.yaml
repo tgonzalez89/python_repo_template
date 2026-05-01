@@ -17,28 +17,28 @@ repos:
       - id: check-json
       - id: check-merge-conflict
       - id: check-added-large-files
-        args: ["--maxkb=1024"]
+        args: [ "--maxkb=1024" ]
       - id: check-case-conflict
       - id: check-docstring-first
       - id: debug-statements
       - id: detect-private-key
       - id: mixed-line-ending
-        args: ["--fix=lf"]
+        args: [ "--fix=lf" ]
       - id: no-commit-to-branch
-        args: ["--branch=main", "--branch=master"]
+        args: [ "--branch=main", "--branch=master" ]
 
   # ---------------------------------------------------------------------------
-  # Ruff – lint (auto-fix) then format
+  # Ruff - lint (auto-fix) then format
   # ---------------------------------------------------------------------------
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.11.7
     hooks:
       - id: ruff
-        args: ["--fix", "--exit-non-zero-on-fix"]
+        args: [ "--fix", "--exit-non-zero-on-fix" ]
       - id: ruff-format
 
   # ---------------------------------------------------------------------------
-  # ty – type checking (Astral)
+  # ty - type checking (Astral)
   # ---------------------------------------------------------------------------
   - repo: local
     hooks:
@@ -47,10 +47,10 @@ repos:
         language: system
         entry: uv run ty check src tests
         pass_filenames: false
-        types: [python]
+        types: [ python ]
 
   # ---------------------------------------------------------------------------
-  # uv lockfile – ensure it is up to date
+  # uv lockfile - ensure it is up to date
   # ---------------------------------------------------------------------------
   - repo: local
     hooks:
@@ -62,10 +62,10 @@ repos:
         files: ^pyproject\.toml$
 
   # ---------------------------------------------------------------------------
-  # Commitizen – enforce Conventional Commits message format
+  # Commitizen - enforce Conventional Commits message format
   # ---------------------------------------------------------------------------
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.6.0
     hooks:
       - id: commitizen
-        stages: [commit-msg]
+        stages: [ commit-msg ]

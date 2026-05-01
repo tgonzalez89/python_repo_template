@@ -6,31 +6,78 @@
       "type": "debugpy",
       "request": "launch",
       "module": "MY_PROJECT_NAME.cli",
-      "args": ["greet", "World"],
-      "env": {},
+      "args": [
+        "greet",
+        "World"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
       "console": "integratedTerminal",
       "justMyCode": true,
-      "python": "${workspaceFolder}/.venv/Scripts/python"
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "python": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "linux": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      },
+      "osx": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      }
     },
     {
-      "name": "Pytest – all tests",
+      "name": "Pytest - all tests",
       "type": "debugpy",
       "request": "launch",
       "module": "pytest",
-      "args": ["tests", "-v"],
+      "args": [
+        "tests",
+        "-v"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
       "console": "integratedTerminal",
       "justMyCode": false,
-      "python": "${workspaceFolder}/.venv/Scripts/python"
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "python": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "linux": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      },
+      "osx": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      }
     },
     {
-      "name": "Pytest – current file",
+      "name": "Pytest - current file",
       "type": "debugpy",
       "request": "launch",
       "module": "pytest",
-      "args": ["${file}", "-v"],
+      "args": [
+        "${file}",
+        "-v"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+      },
       "console": "integratedTerminal",
       "justMyCode": false,
-      "python": "${workspaceFolder}/.venv/Scripts/python"
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "python": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "linux": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      },
+      "osx": {
+        "python": "${workspaceFolder}/.venv/bin/python"
+      }
     }
   ]
 }
