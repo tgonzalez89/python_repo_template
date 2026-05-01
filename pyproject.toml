@@ -29,6 +29,7 @@ dev = [
     "pre-commit>=4.2",
     "pytest>=8.3",
     "pytest-cov>=6.1",
+    "ruff>=0.11",
     "ty>=0.0.1a8",
 ]
 
@@ -46,6 +47,7 @@ dev = [
     "pre-commit>=4.2",
     "pytest>=8.3",
     "pytest-cov>=6.1",
+    "ruff>=0.11",
     "ty>=0.0.1a8",
 ]
 
@@ -78,8 +80,6 @@ select = [
     "PERF",# perflint
 ]
 ignore = [
-    "ANN101", # missing type annotation for self
-    "ANN102", # missing type annotation for cls
     "TRY003", # avoid specifying long messages outside exception class
 ]
 fixable = ["ALL"]
@@ -89,6 +89,10 @@ unfixable = []
 "tests/**/*.py" = [
     "ANN",  # tests don't need full annotation coverage
     "PLR2004", # magic values ok in tests
+    "TC",   # type-checking import moves less important in tests
+]
+"src/MY_PROJECT_NAME/**/*.py" = [
+    "N999", # module name uses placeholder (will be replaced via sed)
 ]
 
 [tool.ruff.lint.isort]
@@ -103,15 +107,16 @@ line-ending = "auto"
 # ---------------------------------------------------------------------------
 # ty – type checker (Astral)
 # ---------------------------------------------------------------------------
-[tool.ty]
-# Strict mode: enable all type checks
-strict = true
-
-[tool.ty.src]
-root = "src"
+[tool.ty.environment]
+root = ["src"]
 
 [tool.ty.rules]
-# All rules enabled by strict = true; add per-rule overrides here if needed
+# Enable strictest available rules
+unknown-argument = "error"
+invalid-return-type = "error"
+missing-argument = "error"
+too-many-positional-arguments = "error"
+unresolved-import = "error"
 
 # ---------------------------------------------------------------------------
 # pytest

@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 import sys
 
+from MY_PROJECT_NAME import __version__
+
 
 def build_parser() -> argparse.ArgumentParser:
     """Build and return the argument parser."""
@@ -15,7 +17,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--version",
         action="version",
-        version=f"%(prog)s {_get_version()}",
+        version=f"%(prog)s {__version__}",
     )
     subparsers = parser.add_subparsers(dest="command", metavar="<command>")
 
@@ -30,12 +32,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     return parser
-
-
-def _get_version() -> str:
-    from MY_PROJECT_NAME import __version__
-
-    return __version__
 
 
 def cmd_greet(name: str, *, shout: bool = False) -> None:

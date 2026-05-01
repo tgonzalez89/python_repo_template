@@ -1,4 +1,4 @@
-"""MY_PROJECT_NAME – top-level package."""
+"""MY_PROJECT_NAME - top-level package."""
 
 from importlib.metadata import version
 
