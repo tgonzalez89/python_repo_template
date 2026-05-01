@@ -1,0 +1,148 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# ---------------------------------------------------------------------------
+# Project metadata
+# ---------------------------------------------------------------------------
+[project]
+name = "MY_PROJECT_NAME"
+version = "0.1.0"
+description = "A short description of MY_PROJECT_NAME."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Your Name", email = "you@example.com" }]
+keywords = ["MY_PROJECT_NAME"]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
+Repository = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
+Issues = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME/issues"
+
+[project.scripts]
+MY_PROJECT_NAME = "MY_PROJECT_NAME.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=4.2",
+    "pytest>=8.3",
+    "pytest-cov>=6.1",
+    "ty>=0.0.1a8",
+]
+
+# ---------------------------------------------------------------------------
+# Hatch build config (src layout)
+# ---------------------------------------------------------------------------
+[tool.hatch.build.targets.wheel]
+packages = ["src/MY_PROJECT_NAME"]
+
+# ---------------------------------------------------------------------------
+# Dependency groups (PEP 735) – used by uv for dev installs
+# ---------------------------------------------------------------------------
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2",
+    "pytest>=8.3",
+    "pytest-cov>=6.1",
+    "ty>=0.0.1a8",
+]
+
+# ---------------------------------------------------------------------------
+# Ruff – linting + formatting (replaces black, isort, flake8, pylint)
+# ---------------------------------------------------------------------------
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "TCH", # flake8-type-checking (move type-only imports into TYPE_CHECKING)
+    "ANN", # flake8-annotations (enforce type hints)
+    "PT",  # flake8-pytest-style
+    "RUF", # Ruff-specific rules
+    "ERA", # eradicate (detect commented-out code)
+    "PL",  # Pylint
+    "TRY", # tryceratops
+    "PERF",# perflint
+]
+ignore = [
+    "ANN101", # missing type annotation for self
+    "ANN102", # missing type annotation for cls
+    "TRY003", # avoid specifying long messages outside exception class
+]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "ANN",  # tests don't need full annotation coverage
+    "PLR2004", # magic values ok in tests
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["MY_PROJECT_NAME"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+# ---------------------------------------------------------------------------
+# ty – type checker (Astral)
+# ---------------------------------------------------------------------------
+[tool.ty]
+# Strict mode: enable all type checks
+strict = true
+
+[tool.ty.src]
+root = "src"
+
+[tool.ty.rules]
+# All rules enabled by strict = true; add per-rule overrides here if needed
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "-ra",
+    "--cov=MY_PROJECT_NAME",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-fail-under=80",
+]
+xfail_strict = true
+
+# ---------------------------------------------------------------------------
+# Coverage
+# ---------------------------------------------------------------------------
+[tool.coverage.run]
+source = ["src/MY_PROJECT_NAME"]
+branch = true
+omit = ["*/cli.py"]  # CLI tested via integration; adjust as needed
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+    "@(abc\\.)?abstractmethod",
+]

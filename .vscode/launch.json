@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "MY_PROJECT_NAME CLI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "MY_PROJECT_NAME.cli",
+      "args": ["greet", "World"],
+      "env": {},
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "python": "${workspaceFolder}/.venv/Scripts/python"
+    },
+    {
+      "name": "Pytest – all tests",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["tests", "-v"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "python": "${workspaceFolder}/.venv/Scripts/python"
+    },
+    {
+      "name": "Pytest – current file",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}", "-v"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "python": "${workspaceFolder}/.venv/Scripts/python"
+    }
+  ]
+}

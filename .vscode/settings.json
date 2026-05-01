@@ -1,0 +1,52 @@
+{
+  // ---------------------------------------------------------------------------
+  // Python interpreter – uv manages the venv at .venv
+  // ---------------------------------------------------------------------------
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python",
+
+  // ---------------------------------------------------------------------------
+  // Editor defaults
+  // ---------------------------------------------------------------------------
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.ruff": "explicit",
+    "source.organizeImports.ruff": "explicit"
+  },
+  "editor.rulers": [88],
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // ---------------------------------------------------------------------------
+  // Ruff – formatter + linter
+  // ---------------------------------------------------------------------------
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
+  "ruff.nativeServer": "on",
+
+  // ---------------------------------------------------------------------------
+  // Type checking via ty
+  // ---------------------------------------------------------------------------
+  "python.analysis.typeCheckingMode": "off", // disable pylance type checking; ty handles it
+  "ty.enable": true,
+
+  // ---------------------------------------------------------------------------
+  // Testing – pytest
+  // ---------------------------------------------------------------------------
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": ["tests"],
+
+  // ---------------------------------------------------------------------------
+  // File exclusions
+  // ---------------------------------------------------------------------------
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/*.egg-info": true,
+    "**/htmlcov": true,
+    "**/.ruff_cache": true,
+    "**/.mypy_cache": true
+  }
+}
