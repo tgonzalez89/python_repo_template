@@ -74,6 +74,7 @@ uv sync
 ### Install pre-commit hooks
 
 ```bash
+uv run pre-commit autoupdate
 uv run pre-commit install --install-hooks
 ```
 
