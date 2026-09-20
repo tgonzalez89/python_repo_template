@@ -1,3 +1,7 @@
+# ---------------------------------------------------------------------------
+# Build system
+# ---------------------------------------------------------------------------
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
@@ -5,42 +9,38 @@ build-backend = "hatchling.build"
 # ---------------------------------------------------------------------------
 # Project metadata
 # ---------------------------------------------------------------------------
+
 [project]
 name = "MY_PROJECT_NAME"
 version = "0.1.0"
 description = "A short description of MY_PROJECT_NAME."
+authors = [{ name = "Your Name", email = "you@example.com" }]
 readme = "README.md"
 license = { file = "LICENSE" }
-authors = [{ name = "Your Name", email = "you@example.com" }]
 keywords = ["MY_PROJECT_NAME"]
 requires-python = ">=3.14"
-# Runtime dependencies for end users of the library/CLI.
-# Keep this stub even when empty so adding first-party requirements is obvious.
-dependencies = []
-
-# User facing optional dependencies.
-#[project.optional-dependencies]
-#<optional-dependency-name-1> = []
-#<optional-dependency-name-2> = []
 
 [project.urls]
 Homepage = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
 Repository = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
 Issues = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME/issues"
 
-[project.scripts]
-MY_PROJECT_NAME = "MY_PROJECT_NAME.cli:main"
+# ---------------------------------------------------------------------------
+# Project dependencies
+# ---------------------------------------------------------------------------
 
-# ---------------------------------------------------------------------------
-# Hatch build config (src layout)
-# ---------------------------------------------------------------------------
-[tool.hatch.build.targets.wheel]
-packages = ["src/MY_PROJECT_NAME"]
+# Runtime dependencies for end users of the library/CLI.
+# Keep this stub even when empty so adding first-party requirements is obvious.
+[project]
+dependencies = []
 
-# ---------------------------------------------------------------------------
+# Runtime optional dependencies for end users of the library/CLI.
+#[project.optional-dependencies]
+#<optional-dependency-name-1> = []
+#<optional-dependency-name-2> = []
+
 # Dependency groups (PEP 735) - preferred modern workflow for local/dev tooling.
 # These are not published as installable extras for downstream users.
-# ---------------------------------------------------------------------------
 [dependency-groups]
 dev = [
   "pre-commit>=4.2",
@@ -51,8 +51,23 @@ dev = [
 ]
 
 # ---------------------------------------------------------------------------
+# Project scripts (entry points)
+# ---------------------------------------------------------------------------
+
+[project.scripts]
+MY_PROJECT_NAME = "MY_PROJECT_NAME.cli:main"
+
+# ---------------------------------------------------------------------------
+# Hatch build config (src layout)
+# ---------------------------------------------------------------------------
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/MY_PROJECT_NAME"]
+
+# ---------------------------------------------------------------------------
 # Ruff - linting + formatting (replaces black, isort, flake8, pylint)
 # ---------------------------------------------------------------------------
+
 [tool.ruff]
 target-version = "py314"
 line-length = 120
@@ -105,6 +120,7 @@ line-ending = "auto"
 # ---------------------------------------------------------------------------
 # ty - type checker (Astral)
 # ---------------------------------------------------------------------------
+
 [tool.ty.environment]
 root = ["src"]
 
@@ -115,6 +131,7 @@ all = "error"
 # ---------------------------------------------------------------------------
 # pytest
 # ---------------------------------------------------------------------------
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = [
@@ -131,6 +148,7 @@ xfail_strict = true
 # ---------------------------------------------------------------------------
 # Coverage
 # ---------------------------------------------------------------------------
+
 [tool.coverage.run]
 source = ["src/MY_PROJECT_NAME"]
 branch = true
