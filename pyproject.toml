@@ -92,11 +92,7 @@ unfixable = []
   "ARG001",  # Allow unused arguments in functions (e.g., fixtures).
   "ARG002",  # Allow unused arguments in methods (e.g., fixtures).
   "ARG005",  # Allow unused arguments in class methods (e.g., fixtures).
-  "D100",    # Allow missing docstring in public modules.
-  "D101",    # Allow missing docstring in public classes.
-  "D102",    # Allow missing docstring in public methods.
-  "D103",    # Allow missing docstring in public functions.
-  "D107",    # Allow missing docstring in __init__ methods.
+  "D1",      # Ignore docstring rules related to public modules, classes, methods, functions, etc.
   "INP001",  # Tests don't need to be part of a package.
   "PLR2004", # Magic values are often fine in tests.
   "SLF001",  # Tests often need access to private members.
