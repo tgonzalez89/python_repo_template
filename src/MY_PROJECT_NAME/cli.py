@@ -41,7 +41,7 @@ def cmd_greet(name: str, *, shout: bool = False) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Main entry point; returns an exit code."""
+    """Run the CLI application; returns an exit code."""
     parser = build_parser()
     args = parser.parse_args(argv)
 

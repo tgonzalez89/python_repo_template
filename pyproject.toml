@@ -62,6 +62,7 @@ src = ["src"]
 select = ["ALL"]
 ignore = [
   "COM812", # Absense of trailing comma is OK since formatter automatically adds them when needed.
+  "CPY001", # Allow files to not have a copyright statement. Remove this if your organization requires them.
   "D203",   # Conflicts with D211.
   "D213",   # Conflicts with D212.
   "FIX002", # Allow TODO comments without requiring immediate resolution.
