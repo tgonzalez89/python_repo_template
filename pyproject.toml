@@ -10,6 +10,11 @@ build-backend = "hatchling.build"
 # Project metadata
 # ---------------------------------------------------------------------------
 
+[project.urls]
+Homepage = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
+Repository = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
+Issues = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME/issues"
+
 [project]
 name = "MY_PROJECT_NAME"
 version = "0.1.0"
@@ -20,18 +25,12 @@ license = { file = "LICENSE" }
 keywords = ["MY_PROJECT_NAME"]
 requires-python = ">=3.14"
 
-[project.urls]
-Homepage = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
-Repository = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
-Issues = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME/issues"
-
 # ---------------------------------------------------------------------------
 # Project dependencies
 # ---------------------------------------------------------------------------
 
 # Runtime dependencies for end users of the library/CLI.
 # Keep this stub even when empty so adding first-party requirements is obvious.
-[project]
 dependencies = []
 
 # Runtime optional dependencies for end users of the library/CLI.
