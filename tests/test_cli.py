@@ -1,4 +1,4 @@
-"""Tests for the MY_PROJECT_NAME CLI."""
+"""Tests for the project_name CLI."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     import pytest
 
-from MY_PROJECT_NAME.cli import build_parser, cmd_greet, main
+from project_name.cli import build_parser, cmd_greet, main
 
 
 def test_greet_stdout(capsys: pytest.CaptureFixture[str]) -> None:

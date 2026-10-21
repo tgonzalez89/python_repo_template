@@ -11,19 +11,19 @@ build-backend = "hatchling.build"
 # ---------------------------------------------------------------------------
 
 [project.urls]
-Homepage = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
-Repository = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME"
-Issues = "https://github.com/YOUR_USERNAME/MY_PROJECT_NAME/issues"
+Homepage = "https://github.com/username/project_name"
+Repository = "https://github.com/username/project_name"
+Issues = "https://github.com/username/project_name/issues"
 
 [project]
-name = "MY_PROJECT_NAME"
+name = "project_name"
 version = "0.1.0"
-description = "A short description of MY_PROJECT_NAME."
+description = "A short description of project_name."
 authors = [{ name = "Your Name", email = "you@example.com" }]
 readme = "README.md"
 license = { file = "LICENSE" }
-keywords = ["MY_PROJECT_NAME"]
-requires-python = ">=3.14"
+keywords = ["project_name"]
+requires-python = ">=3.15"
 
 # ---------------------------------------------------------------------------
 # Project dependencies
@@ -54,24 +54,24 @@ dev = [
 # ---------------------------------------------------------------------------
 
 [project.scripts]
-MY_PROJECT_NAME = "MY_PROJECT_NAME.cli:main"
+project_name = "project_name.cli:main"
 
 #[project.gui-scripts]
-#print_picker = "MY_PROJECT_NAME.gui:main"
+#print_picker = "project_name.gui:main"
 
 # ---------------------------------------------------------------------------
 # Hatch build config (src layout)
 # ---------------------------------------------------------------------------
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/MY_PROJECT_NAME"]
+packages = ["src/project_name"]
 
 # ---------------------------------------------------------------------------
 # Ruff - linting + formatting (replaces black, isort, flake8, pylint)
 # ---------------------------------------------------------------------------
 
 [tool.ruff]
-target-version = "py314"
+target-version = "py315"
 line-length = 120
 src = ["src"]
 
@@ -101,13 +101,9 @@ unfixable = []
   "SLF001",  # Tests often need access to private members.
   "S101",    # Plain assert is standard Pytest style.
 ]
-# Delete this in a real project. This is flagged because the template project name is uppercase.
-"src/MY_PROJECT_NAME/**/*.py" = [
-  "N999", # module name uses placeholder (will be replaced via sed)
-]
 
 [tool.ruff.lint.isort]
-known-first-party = ["MY_PROJECT_NAME"]
+known-first-party = ["project_name"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -136,7 +132,7 @@ addopts = [
   "--strict-markers",
   "--strict-config",
   "-ra",
-  "--cov=MY_PROJECT_NAME",
+  "--cov=project_name",
   "--cov-report=term-missing",
   "--cov-report=html:htmlcov",
   "--cov-fail-under=80",
@@ -148,9 +144,9 @@ xfail_strict = true
 # ---------------------------------------------------------------------------
 
 [tool.coverage.run]
-source = ["src/MY_PROJECT_NAME"]
+source = ["src/project_name"]
 branch = true
-omit = ["*/cli.py"]              # CLI tested via integration; adjust as needed
+omit = ["*/cli.py"]           # CLI tested via integration; adjust as needed
 
 [tool.coverage.report]
 show_missing = true

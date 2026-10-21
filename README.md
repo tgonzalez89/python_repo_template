@@ -1,6 +1,6 @@
-# MY_PROJECT_NAME
+# project_name
 
-> A short description of MY_PROJECT_NAME.
+> A short description of project_name.
 
 ---
 
@@ -12,12 +12,12 @@ This repository is a **project template**. To create a new project named `my_pac
 
 ```bash
 # 1. Clone / copy the template
-git clone https://github.com/YOUR_USERNAME/MY_PROJECT_NAME.git my_package
+git clone https://github.com/username/project_name.git my_package
 cd my_package
 
 # 2. Rename every occurrence of the placeholder (files + contents)
 NEWNAME="my_package"
-PLACEHOLDER="MY_PROJECT_NAME"
+PLACEHOLDER="project_name"
 
 # Rename the package directory first
 mv src/${PLACEHOLDER} src/${NEWNAME}
@@ -38,7 +38,7 @@ rm -rf .git && git init && git add . && git commit -m "chore: initial commit"
 
 ```powershell
 $newname    = "my_package"
-$placeholder = "MY_PROJECT_NAME"
+$placeholder = "project_name"
 
 # Rename package directory
 Rename-Item "src\$placeholder" "src\$newname"
@@ -81,8 +81,8 @@ uv run pre-commit install --install-hooks
 ### Run the CLI
 
 ```bash
-uv run MY_PROJECT_NAME greet World
-uv run MY_PROJECT_NAME greet World --shout
+uv run project_name greet World
+uv run project_name greet World --shout
 ```
 
 ### Run tests
@@ -117,14 +117,14 @@ uv run ty check src tests
 ```
 .
 ├── src/
-│   └── MY_PROJECT_NAME/
+│   └── project_name/
 │       ├── __init__.py      # package version
 │       ├── cli.py           # CLI entry point
 │       └── py.typed         # PEP 561 marker (typed package)
 ├── tests/
 │   ├── conftest.py
 │   ├── test_cli.py
-│   └── test_MY_PROJECT_NAME.py
+│   └── test_project_name.py
 ├── .editorconfig
 ├── .gitignore
 ├── .pre-commit-config.yaml

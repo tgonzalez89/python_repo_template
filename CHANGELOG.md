@@ -10,4 +10,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial project structure.
 
-[Unreleased]: https://github.com/YOUR_USERNAME/MY_PROJECT_NAME/compare/HEAD...HEAD
+[Unreleased]: https://github.com/username/project_name/compare/HEAD...HEAD

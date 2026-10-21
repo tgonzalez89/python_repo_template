@@ -2,10 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "MY_PROJECT_NAME CLI",
+      "name": "project_name CLI",
       "type": "debugpy",
       "request": "launch",
-      "module": "MY_PROJECT_NAME.cli",
+      "module": "project_name.cli",
       "args": [
         "greet",
         "World"
