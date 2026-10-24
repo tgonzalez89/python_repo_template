@@ -7,30 +7,33 @@ A short description of project_name.
 ## Quickstart from template
 
 This repository is a **project template**. Use the following commands to rename it.
-Replace the `NEWNAME` variable value `your_actual_project_name` with the name of your actual project.
+Set `NEWNAME` to a valid Python package name (for example, `my_project`).
 
-### Unix / macOS (bash / zsh)
+### Linux, macOS, Unix (POSIX-style shell)
 
-```bash
+```sh
 NEWNAME="your_actual_project_name"
-PLACEHOLDER="project_name"
+PLACEHOLDER=project_name
 
-git clone https://github.com/tgonzalez89/project_name.git "$NEWNAME"
+# Clone the template into the new project directory.
+git clone https://github.com/tgonzalez89/python_repo_template.git "$NEWNAME"
 cd "$NEWNAME"
 
-# Rename the package directory
-mv src/${PLACEHOLDER} src/${NEWNAME}
-
-# Replace in all text files containing the PLACEHOLDER
-git grep -rl "${PLACEHOLDER}" | xargs sed -i "s/${PLACEHOLDER}/${NEWNAME}/g"
-
-# Rename files/dirs containing the PLACEHOLDER
-find . -depth -name "*${PLACEHOLDER}*" | while IFS= read -r f; do
-  mv "$f" "$(dirname "$f")/$(basename "$f" | sed "s/${PLACEHOLDER}/${NEWNAME}/g")"
+# Substitute the placeholder in tracked text files.
+git grep -Il "$PLACEHOLDER" | while IFS= read -r file; do
+  sed "s/$PLACEHOLDER/$NEWNAME/g" "$file" > "$file.tmp" &&
+    mv "$file.tmp" "$file"
 done
 
-# Re-init git
-rm -rf .git && git init && git add . && git commit -m "chore: initial commit"
+# Rename the package directory and matching test file.
+mv "src/$PLACEHOLDER" "src/$NEWNAME"
+mv "tests/test_$PLACEHOLDER.py" "tests/test_$NEWNAME.py"
+
+# Remove the template's Git history and initialize a fresh repository.
+rm -rf .git
+git init -b main
+git add .
+git commit -m "chore: initial commit"
 ```
 
 ### Windows (PowerShell)
@@ -39,24 +42,26 @@ rm -rf .git && git init && git add . && git commit -m "chore: initial commit"
 $NEWNAME = "your_actual_project_name"
 $PLACEHOLDER = "project_name"
 
-git clone https://github.com/tgonzalez89/project_name.git "$NEWNAME"
-Set-Location -Path "$PLACEHOLDER"
+# Clone the template into the new project directory.
+git clone https://github.com/tgonzalez89/python_repo_template.git "$NEWNAME"
+Set-Location -Path "$NEWNAME"
 
-# Rename package directory
-Rename-Item "src\$PLACEHOLDER" "src\$NEWNAME"
-
-# Replace in all text files containing the PLACEHOLDER
-Get-ChildItem -Recurse -File | Where-Object { $_.Extension -match '\.(py|toml|yaml|yml|json|md|txt|cfg)$' } | ForEach-Object {
-    (Get-Content $_.FullName -Raw) -replace $PLACEHOLDER, $NEWNAME | Set-Content $_.FullName
+# Substitute the placeholder in tracked text files.
+git grep -Il -- $PLACEHOLDER | ForEach-Object {
+    $path = $_
+    $content = [System.IO.File]::ReadAllText($path)
+    [System.IO.File]::WriteAllText($path, $content.Replace($PLACEHOLDER, $NEWNAME))
 }
 
-# Rename files/dirs containing the PLACEHOLDER
-Get-ChildItem -Recurse -Filter "*$PLACEHOLDER*" | Sort-Object -Descending FullName | ForEach-Object {
-    Rename-Item $_.FullName ($_.Name -replace $PLACEHOLDER, $NEWNAME)
-}
+# Rename the package directory and matching test file.
+Move-Item "src\$PLACEHOLDER" "src\$NEWNAME"
+Move-Item "tests\test_$PLACEHOLDER.py" "tests\test_$NEWNAME.py"
 
-# Re-init git
-Remove-Item .git -Recurse -Force; git init; git add .; git commit -m "chore: initial commit"
+# Remove the template's Git history and initialize a fresh repository.
+Remove-Item .git -Recurse -Force
+git init -b main
+git add .
+git commit -m "chore: initial commit"
 ```
 
 ---
