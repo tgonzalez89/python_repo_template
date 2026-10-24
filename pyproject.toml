@@ -57,7 +57,7 @@ dev = [
 project_name = "project_name.cli:main"
 
 #[project.gui-scripts]
-#print_picker = "project_name.gui:main"
+#project_name_gui = "project_name.gui:main"
 
 # ---------------------------------------------------------------------------
 # Hatch build config (src layout)
