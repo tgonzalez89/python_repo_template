@@ -41,13 +41,7 @@ dependencies = []
 # Dependency groups (PEP 735) - preferred modern workflow for local/dev tooling.
 # These are not published as installable extras for downstream users.
 [dependency-groups]
-dev = [
-  "pre-commit",
-  "pytest",
-  "pytest-cov",
-  "ruff",
-  "ty",
-]
+dev = ["pre-commit", "pytest", "pytest-cov", "ruff", "ty"]
 
 # ---------------------------------------------------------------------------
 # Project scripts (entry points)
@@ -105,7 +99,7 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 # ---------------------------------------------------------------------------
-# ty - type checker (Astral)
+# ty - type checker
 # ---------------------------------------------------------------------------
 
 [tool.ty.environment]
