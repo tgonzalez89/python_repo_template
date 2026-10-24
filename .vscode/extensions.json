@@ -6,7 +6,6 @@
     "tamasfe.even-better-toml",
     "redhat.vscode-yaml",
     "editorconfig.editorconfig",
-    "eamodio.gitlens",
     "usernamehw.errorlens"
   ]
 }
