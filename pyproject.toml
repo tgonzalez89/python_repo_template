@@ -35,18 +35,18 @@ dependencies = []
 
 # Runtime optional dependencies for end users of the library/CLI.
 #[project.optional-dependencies]
-#<optional-dependency-name-1> = []
-#<optional-dependency-name-2> = []
+#optional-dependency-name-1 = [dep_1, dep_2, ...]
+#optional-dependency-name-2 = [dep_a, dep_b, ...]
 
 # Dependency groups (PEP 735) - preferred modern workflow for local/dev tooling.
 # These are not published as installable extras for downstream users.
 [dependency-groups]
 dev = [
-  "pre-commit>=4.2",
-  "pytest>=8.3",
-  "pytest-cov>=6.1",
-  "ruff>=0.11",
-  "ty>=0.0.1a8",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "ruff",
+  "ty",
 ]
 
 # ---------------------------------------------------------------------------
@@ -58,13 +58,6 @@ project_name = "project_name.cli:main"
 
 #[project.gui-scripts]
 #project_name_gui = "project_name.gui:main"
-
-# ---------------------------------------------------------------------------
-# Hatch build config (src layout)
-# ---------------------------------------------------------------------------
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/project_name"]
 
 # ---------------------------------------------------------------------------
 # Ruff - linting + formatting (replaces black, isort, flake8, pylint)
