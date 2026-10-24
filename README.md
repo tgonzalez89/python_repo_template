@@ -1,56 +1,58 @@
 # project_name
 
-> A short description of project_name.
+A short description of project_name.
 
 ---
 
 ## Quickstart from template
 
-This repository is a **project template**. To create a new project named `my_package`:
+This repository is a **project template**. Use the following commands to rename it.
+Replace the `NEWNAME` variable value `your_actual_project_name` with the name of your actual project.
 
 ### Unix / macOS (bash / zsh)
 
 ```bash
-# 1. Clone / copy the template
-git clone https://github.com/username/project_name.git my_package
-cd my_package
-
-# 2. Rename every occurrence of the placeholder (files + contents)
-NEWNAME="my_package"
+NEWNAME="your_actual_project_name"
 PLACEHOLDER="project_name"
 
-# Rename the package directory first
+git clone https://github.com/tgonzalez89/project_name.git "$NEWNAME"
+cd "$NEWNAME"
+
+# Rename the package directory
 mv src/${PLACEHOLDER} src/${NEWNAME}
 
-# Replace all occurrences inside files (git-tracked files only)
+# Replace in all text files containing the PLACEHOLDER
 git grep -rl "${PLACEHOLDER}" | xargs sed -i "s/${PLACEHOLDER}/${NEWNAME}/g"
 
-# Rename any remaining files whose names contain the placeholder
+# Rename files/dirs containing the PLACEHOLDER
 find . -depth -name "*${PLACEHOLDER}*" | while IFS= read -r f; do
   mv "$f" "$(dirname "$f")/$(basename "$f" | sed "s/${PLACEHOLDER}/${NEWNAME}/g")"
 done
 
-# 3. Re-initialise git history
+# Re-init git
 rm -rf .git && git init && git add . && git commit -m "chore: initial commit"
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-$newname    = "my_package"
-$placeholder = "project_name"
+$NEWNAME = "your_actual_project_name"
+$PLACEHOLDER = "project_name"
+
+git clone https://github.com/tgonzalez89/project_name.git "$NEWNAME"
+Set-Location -Path "$PLACEHOLDER"
 
 # Rename package directory
-Rename-Item "src\$placeholder" "src\$newname"
+Rename-Item "src\$PLACEHOLDER" "src\$NEWNAME"
 
-# Replace in all text files
+# Replace in all text files containing the PLACEHOLDER
 Get-ChildItem -Recurse -File | Where-Object { $_.Extension -match '\.(py|toml|yaml|yml|json|md|txt|cfg)$' } | ForEach-Object {
-    (Get-Content $_.FullName -Raw) -replace $placeholder, $newname | Set-Content $_.FullName
+    (Get-Content $_.FullName -Raw) -replace $PLACEHOLDER, $NEWNAME | Set-Content $_.FullName
 }
 
-# Rename files/dirs containing the placeholder
-Get-ChildItem -Recurse -Filter "*$placeholder*" | Sort-Object -Descending FullName | ForEach-Object {
-    Rename-Item $_.FullName ($_.Name -replace $placeholder, $newname)
+# Rename files/dirs containing the PLACEHOLDER
+Get-ChildItem -Recurse -Filter "*$PLACEHOLDER*" | Sort-Object -Descending FullName | ForEach-Object {
+    Rename-Item $_.FullName ($_.Name -replace $PLACEHOLDER, $NEWNAME)
 }
 
 # Re-init git
@@ -112,48 +114,14 @@ uv run ty check src tests
 
 ---
 
-## Project layout
-
-```
-.
-├── src/
-│   └── project_name/
-│       ├── __init__.py      # package version
-│       ├── cli.py           # CLI entry point
-│       └── py.typed         # PEP 561 marker (typed package)
-├── tests/
-│   ├── conftest.py
-│   ├── test_cli.py
-│   └── test_project_name.py
-├── .editorconfig
-├── .gitignore
-├── .pre-commit-config.yaml
-├── .python-version
-├── .vscode/
-│   ├── extensions.json
-│   ├── launch.json
-│   └── settings.json
-├── pyproject.toml           # single source of truth for all config
-└── uv.lock                  # committed lockfile
-```
-
----
-
 ## Tools
 
 | Tool | Purpose |
 |------|---------|
-| [uv](https://docs.astral.sh/uv/) | Fast package manager & virtualenv |
-| [ruff](https://docs.astral.sh/ruff/) | Linting + formatting (replaces black, isort, flake8) |
-| [ty](https://github.com/astral-sh/ty) | Type checker (Astral) |
+| [uv](https://docs.astral.sh/uv/) | Package manager & virtualenv |
+| [ruff](https://docs.astral.sh/ruff/) | Linting + formatting |
+| [ty](https://github.com/astral-sh/ty) | Type checker |
 | [pytest](https://pytest.org) | Test framework |
 | [pytest-cov](https://pytest-cov.readthedocs.io) | Coverage |
 | [pre-commit](https://pre-commit.com) | Git hooks |
-| [hatchling](https://hatch.pypa.io) | Build backend |
 | [commitizen](https://commitizen-tools.github.io/commitizen/) | Conventional commits |
-
----
-
-## License
-
-See [LICENSE](LICENSE).
