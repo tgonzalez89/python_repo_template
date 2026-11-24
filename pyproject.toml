@@ -121,8 +121,6 @@ addopts = [
   "-ra",
   "--cov=project_name",
   "--cov-report=term-missing",
-  "--cov-report=html:htmlcov",
-  "--cov-fail-under=80",
 ]
 xfail_strict = true
 
@@ -133,9 +131,12 @@ xfail_strict = true
 [tool.coverage.run]
 source = ["src/project_name"]
 branch = true
-omit = ["*/cli.py"]           # CLI tested via integration; adjust as needed
+concurrency = ["multiprocessing", "thread"]
+parallel = true
+sigterm = true
 
 [tool.coverage.report]
+fail_under = 90
 show_missing = true
 skip_covered = false
 exclude_lines = [
